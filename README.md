@@ -65,4 +65,3 @@ The file manager will use the default self-signed SSL certificate, to use any ot
 
 We wish you great achievements with our product.
 
-Sprut.io Team.
