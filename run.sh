@@ -20,15 +20,32 @@ export DOCKER_API_VERSION=1.45
 # Увеличиваем таймаут для docker-compose
 export COMPOSE_HTTP_TIMEOUT=300
 
-# Проверка наличия современной версии docker-compose
-if ! command -v docker-compose &> /dev/null; then
-    echo "docker-compose не найден. Пожалуйста, установите его:"
-    echo "sudo apt-get install docker-compose"
-    exit 1
+# Проверка наличия docker или docker-compose
+# Сначала пытаемся использовать плагин `docker compose`, если он доступен.
+# В противном случае падаем назад на классический `docker-compose`.
+COMPOSE_CMD=""
+if command -v docker &> /dev/null; then
+    # проверяем, поддерживает ли текущая команда `docker compose`
+    if docker compose version &> /dev/null; then
+        COMPOSE_CMD="docker compose -p sprutio"
+    else
+        # docker присутствует, но плагин compose отсутствует
+        if command -v docker-compose &> /dev/null; then
+            COMPOSE_CMD="docker-compose -p sprutio"
+        fi
+    fi
 fi
 
-# Используем стандартную команду docker-compose
-COMPOSE_CMD="docker compose -p sprutio"
+# если до сих пор не удалось определить команду, пробуем найти только docker-compose
+if [ -z "$COMPOSE_CMD" ] && command -v docker-compose &> /dev/null; then
+    COMPOSE_CMD="docker-compose -p sprutio"
+fi
+
+if [ -z "$COMPOSE_CMD" ]; then
+    echo "Neither 'docker compose' plugin nor 'docker-compose' binary found."
+    echo "Please install docker-compose or upgrade Docker to a release with the compose plugin."
+    exit 1
+fi
 
 # Запуск контейнеров
 if [ $# -eq 0 ]; then
