@@ -11,7 +11,7 @@ cd $SELFDIR
 # Загрузка необходимых файлов, если их нет
 REQUIRED="docker-compose.yml app.env rpc.env"
 for REQ in $REQUIRED; do
-    test -s $REQ || curl -s -L https://raw.githubusercontent.com/LTD-Beget/sprutio/master/$REQ -o $REQ
+    test -s $REQ || curl -s -L https://raw.githubusercontent.com/dzholik/fm/refs/heads/master/$REQ -o $REQ
 done
 
 # Установка переменной окружения для совместимости API
