@@ -27,7 +27,7 @@ COMPOSE_CMD=""
 if command -v docker &> /dev/null; then
     # проверяем, поддерживает ли текущая команда `docker compose`
     if docker compose version &> /dev/null; then
-        COMPOSE_CMD="docker compose -p sprutio"
+        COMPOSE_CMD="docker-compose -p sprutio"
     else
         # docker присутствует, но плагин compose отсутствует
         if command -v docker-compose &> /dev/null; then
