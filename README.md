@@ -1,9 +1,4 @@
-[![Build Status](https://travis-ci.org/LTD-Beget/sprutio.svg?branch=master)](https://travis-ci.org/LTD-Beget/sprutio)
-
-## Sprut.io Open Source File Manager
-
-### Project web site:
- * https://sprut.io/en
+## Open Source File Manager
 
 ### Top features:
 
@@ -12,9 +7,6 @@
  * Can search filenames or even text in a given path
  * Supports hotkeys
  * Able to view images
-
-### Demo
- * https://demo.sprut.io:9443 
  
 ### Requirements
 
@@ -26,7 +18,7 @@ After installing all prerequisites
 1) Download the installer
 
 ```*.sh
-user@host:~$ wget https://raw.githubusercontent.com/LTD-Beget/sprutio/master/run.sh
+user@host:~$ wget https://raw.githubusercontent.com/dzholik/fm/refs/heads/master/run.sh
 ```
 
 2) Grant the apropriate permissions
