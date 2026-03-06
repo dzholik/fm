@@ -18,19 +18,19 @@ After installing all prerequisites
 1) Download the installer
 
 ```*.sh
-user@host:~$ wget https://raw.githubusercontent.com/dzholik/fm/refs/heads/master/run.sh
+wget https://raw.githubusercontent.com/dzholik/fm/refs/heads/master/run.sh
 ```
 
 2) Grant the apropriate permissions
 
 ```*.sh
-user@host:~$ chmod +x run.sh
+chmod +x run.sh
 ```
 
 3) Run the script
 
 ```*.sh
-user@host:~$ ./run.sh
+./run.sh
 ```
 
 It will be running around 10 to 15 minutes on average, great opportunity to drink some tea.
